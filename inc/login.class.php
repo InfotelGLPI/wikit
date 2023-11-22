@@ -65,15 +65,15 @@ class PluginWikitLogin extends CommonDBTM
                         },
                         chatButtonTooltip: {
                             text: "' . $description_text . '",
-                            backgroundColor: "#243469",
+                            backgroundColor: "#005091",
                             textColor: "#FFFFFF",
                             visibility: "hidden",
                         },
-//                        chatButtonAnimation: { // Animation du bouton de chat
-//                            delay: null, // Délais en millisecondes après lequel le bouton s"anime
-//                            enabled: true, // Active l"animation
-//                            openTooltip: true // Ouvre l"info-bulle après l"animation
-//                        },
+                        chatButtonAnimation: { // Animation du bouton de chat
+                            delay: null, // Délais en millisecondes après lequel le bouton s"anime
+                            enabled: true, // Active l"animation
+                            openTooltip: true // Ouvre l"info-bulle après l"animation
+                        },
                         headerButtons: {
                             color: "#fff",
                             closeIconDescription: "' . $close_text . '",

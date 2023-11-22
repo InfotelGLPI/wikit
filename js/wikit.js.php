@@ -72,7 +72,7 @@ var loadWebChat = function() {
         },
         chatButtonTooltip: {
             text: description_text,
-            backgroundColor: "#4AB7EC",
+            backgroundColor: "#005091",
             textColor: "#FFFFFF",
             visibility: "hidden",
         },
