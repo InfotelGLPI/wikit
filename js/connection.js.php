@@ -7,7 +7,14 @@ header('Content-Type: text/javascript');
 $user = new User();
 $user->getFromDB(Session::getLoginUserID());
 $userLogin = $user->fields['name'] ?? 'anonymous';
-$webChatToken = 'xxxxxxxxx A COMPLETER xxxxxxxxxx';
+$config = new PluginWikitConfig();
+$config->getFromDB(1);
+$webChatToken = $config->fields['webchattoken'];
+$description_text = __('A problem ? Ask me your question 😊', 'wikit');
+$close_text = __('Close the window', 'wikit');
+$open_newwindow_text = __('Open in new tab', 'wikit');
+$maximize_text = __('Enlarge window', 'wikit');
+$minimize_text = __('Shrink window', 'wikit');
 
 ?>
 
@@ -30,11 +37,11 @@ function loadScript(url, callback)
 
 var userLogin = "<?php $userLogin?>";
 var webChatToken = "<?php $webChatToken?>";
-var description_text = "<?php echo "Un souci ? Posez-moi votre question 😊" ?>";
-var close_text = "<?php echo "Fermer la fenêtre" ?>";
-var open_newwindow_text = "<?php echo "Ouvrir dans un nouvel onglet" ?>";
-var maximize_text = "<?php echo "Agrandir la fenêtre" ?>";
-var minimize_text = "<?php echo "Rétrécir la fenêtre" ?>";
+var description_text = "<?php $description_text?>";
+var close_text = "<?php $close_text?>";
+var open_newwindow_text = "<?php $open_newwindow_text?>";
+var maximize_text = "<?php $maximize_text?>";
+var minimize_text = "<?php $minimize_text?>";
 
 //------ Wikit integration (D87 / Bob) ------
 
@@ -52,10 +59,11 @@ var loadWebChat = function() {
         height: "80%",
         width: "30%",
         chatButtonIcon: {
-            url: "https://www.awelty.fr/medias/images/chatbot-illustration-etapes-awelty.png",
+            url: "https://wikit-files-hpg.s3.eu-de.objectstorage.softlayer.net/1657139091885-Neo.png",
+            //url: "https://www.awelty.fr/medias/images/chatbot-illustration-etapes-awelty.png",
             altText: "Bob",
-            height: "50px",
-            width: "50px",
+            height: "100px",
+            width: "100px",
             borderRadius: "50%",
         },
         chatButtonTooltip: {

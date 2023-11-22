@@ -54,6 +54,10 @@ function plugin_init_wikit()
         'js/connection.js.php',
     ];
 
+    if (Session::haveRight("config", UPDATE)) {
+        $PLUGIN_HOOKS['config_page']['wikit'] = 'front/config.form.php';
+    }
+
     $PLUGIN_HOOKS['display_login']['wikit'] = "plugin_wikit_display_login";
     
 }
@@ -68,7 +72,7 @@ function plugin_init_wikit()
 function plugin_version_wikit()
 {
     return [
-        'name' => 'wikit',
+        'name' => 'Wikit',
         'version' => PLUGIN_WIKIT_VERSION,
         'author' => '<a href="https://blogglpi.infotel.com">Infotel</a>',
         'license' => 'GPL v2+',

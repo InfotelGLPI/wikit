@@ -25,36 +25,21 @@
  --------------------------------------------------------------------------
  */
 
-function plugin_wikit_install()
-{
-    global $DB;
+include('../../../inc/includes.php');
 
-    if (!$DB->tableExists("glpi_plugin_wikit_configs")) {
-        $DB->runFile(PLUGIN_STOCKVIEW_DIR . "/install/sql/empty-1.0.0.sql");
+global $CFG_GLPI;
+
+if (Plugin::isPluginActive("wikit")) {
+    if (Session::haveRight("config", UPDATE)) {
+        Html::header(__('Setup', 'wikit'), '', "config", "pluginwikitmenu", "config");
+
+        Html::footer();
+    } else {
+        Html::displayRightError();
     }
-
-    return true;
-}
-
-
-/**
- * Plugin uninstall process
- *
- * @return boolean
- */
-function plugin_wikit_uninstall()
-{
-    global $DB;
-
-    // Plugin tables deletion
-    $tables = ["glpi_plugin_wikit_configss"];
-
-    foreach ($tables as $table) {
-        $DB->query("DROP TABLE IF EXISTS `$table`;");
-    }
-}
-
-function plugin_wikit_display_login()
-{
-    PluginWikitLogin::displayWebChat();
+} else {
+    Html::header(__('Setup'), '', "config", "plugins");
+    echo "<div class='alert alert-important alert-warning d-flex'>";
+    echo "<b>" . __('Please activate the plugin', 'wikit') . "</b></div>";
+    Html::footer();
 }

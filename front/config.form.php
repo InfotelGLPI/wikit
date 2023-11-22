@@ -25,36 +25,32 @@
  --------------------------------------------------------------------------
  */
 
-function plugin_wikit_install()
-{
-    global $DB;
+include('../../../inc/includes.php');
 
-    if (!$DB->tableExists("glpi_plugin_wikit_configs")) {
-        $DB->runFile(PLUGIN_STOCKVIEW_DIR . "/install/sql/empty-1.0.0.sql");
-    }
-
-    return true;
+if (!isset($_GET["id"])) {
+    $_GET["id"] = "1";
 }
 
-
-/**
- * Plugin uninstall process
- *
- * @return boolean
- */
-function plugin_wikit_uninstall()
-{
-    global $DB;
-
-    // Plugin tables deletion
-    $tables = ["glpi_plugin_wikit_configss"];
-
-    foreach ($tables as $table) {
-        $DB->query("DROP TABLE IF EXISTS `$table`;");
-    }
+if (!isset($_POST["id"])) {
+    $_POST["id"] = "1";
 }
 
-function plugin_wikit_display_login()
-{
-    PluginWikitLogin::displayWebChat();
+if (Plugin::isPluginActive("wikit")) {
+    Session::checkRight("config", UPDATE);
+
+    $config = new PluginWikitConfig();
+
+    if (isset($_POST["update_config"])) {
+        $config->update($_POST);
+        Html::back();
+    } else {
+        Html::header(__('Setup', 'wikit'), '', "config", "pluginwikitmenu", "config");
+        $config->display($_GET);
+        Html::footer();
+    }
+} else {
+    Html::header(__('Setup'), '', "config", "plugins");
+    echo "<div class='alert alert-important alert-warning d-flex'>";
+    echo "<b>" . __('Please activate the plugin', 'wikit') . "</b></div>";
+    Html::footer();
 }
