@@ -10,12 +10,12 @@ $userLogin = $user->fields['name'] ?? 'anonymous';
 $config = new PluginWikitConfig();
 $config->getFromDB(1);
 $webChatToken = $config->fields['webchattoken'];
-$description_text = __('A problem ? Ask me your question 😊', 'wikit');
-$close_text = __('Close the window', 'wikit');
-$open_newwindow_text = __('Open in new tab', 'wikit');
-$maximize_text = __('Enlarge window', 'wikit');
-$minimize_text = __('Shrink window', 'wikit');
-
+$description_text = $config->fields['description_text'] ?? __('A problem ? Ask me your question 😊', 'wikit');
+$close_text = $config->fields['close_text'] ?? __('Close the window', 'wikit');
+$open_newwindow_text = $config->fields['open_newwindow_text'] ?? __('Open in new tab', 'wikit');
+$maximize_text = $config->fields['maximize_text'] ?? __('Enlarge window', 'wikit');
+$minimize_text = $config->fields['minimize_text'] ?? __('Shrink window', 'wikit');
+Toolbox::logInfo($description_text);
 ?>
 
 function loadScript(url, callback)
@@ -35,13 +35,13 @@ function loadScript(url, callback)
     head.appendChild(script);
 }
 
-var userLogin = "<?php $userLogin?>";
-var webChatToken = "<?php $webChatToken?>";
-var description_text = "<?php $description_text?>";
-var close_text = "<?php $close_text?>";
-var open_newwindow_text = "<?php $open_newwindow_text?>";
-var maximize_text = "<?php $maximize_text?>";
-var minimize_text = "<?php $minimize_text?>";
+var userLogin = "<?php echo $userLogin ?>";
+var webChatToken = "<?php echo $webChatToken ?>";
+var description_text = "<?php echo $description_text ?>";
+var close_text = "<?php $close_text ?>";
+var open_newwindow_text = "<?php echo $open_newwindow_text ?>";
+var maximize_text = "<?php echo $maximize_text ?>";
+var minimize_text = "<?php echo $minimize_text ?>";
 
 //------ Wikit integration (D87 / Bob) ------
 

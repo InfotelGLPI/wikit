@@ -40,7 +40,7 @@ if (Plugin::isPluginActive("wikit")) {
 
     $config = new PluginWikitConfig();
 
-    if (isset($_POST["update_config"])) {
+    if (isset($_POST["update"])) {
         $config->update($_POST);
         Html::back();
     } else {

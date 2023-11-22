@@ -61,8 +61,8 @@ class PluginWikitConfig extends CommonDBTM
 
         echo "<form name='form' method='post' action='" . Toolbox::getItemTypeFormURL('PluginWikitConfig') . "'>";
 
-        echo "<div align='center'><table class='tab_cadre_fixe'>";
-        echo "<tr><th colspan='4'>" . __('Setup', 'wikit') . "</th></tr>";
+        echo "<div class='center'><table class='tab_cadre_fixe'>";
+        echo "<tr><th colspan='4'>" . __('Wikit plugin setup', 'wikit') . "</th></tr>";
         echo "<tr class='tab_bg_1'>";
 
         echo "<tr class='tab_bg_1'>";
@@ -70,11 +70,65 @@ class PluginWikitConfig extends CommonDBTM
         echo "<td>";
         echo Html::input('webchattoken', ['value' => $this->fields['webchattoken'], 'size' => 100]);
         echo "</td>";
+
+        echo "<td>" . __('Display on login', 'wikit') . "</td>";
+        echo "<td>";
+        Dropdown::showYesNo('display_on_login', is_numeric($this->getField('display_on_login')) ? $this->getField('display_on_login') : 1);
+        echo "</td>";
         echo "</tr>";
 
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Home description text", 'wikit') . "</td>";
+        echo "<td>";
+        echo Html::input('home_description_text', ['value' => $this->fields['home_description_text'], 'size' => 100]);
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Description text", 'wikit') . "</td>";
+        echo "<td>";
+        echo Html::input('description_text', ['value' => $this->fields['description_text'], 'size' => 100]);
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Closing window text", 'wikit') . "</td>";
+        echo "<td>";
+        echo Html::input('close_text', ['value' => $this->fields['close_text'], 'size' => 100]);
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Open new window text", 'wikit') . "</td>";
+        echo "<td>";
+        echo Html::input('open_newwindow_text', ['value' => $this->fields['open_newwindow_text'], 'size' => 100]);
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Maximize window text", 'wikit') . "</td>";
+        echo "<td>";
+        echo Html::input('maximize_text', ['value' => $this->fields['maximize_text'], 'size' => 100]);
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Minimize window text", 'wikit') . "</td>";
+        echo "<td>";
+        echo Html::input('minimize_text', ['value' => $this->fields['minimize_text'], 'size' => 100]);
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        //TODO Add params to translation ?
 
         echo "<tr><td class='tab_bg_2 center' colspan='6'>";
-        echo Html::submit(_sx('button', 'Post'), ['name' => 'update_config', 'class' => 'btn btn-primary']);
+        echo Html::submit(_sx('button', 'Post'), ['name' => 'update', 'class' => 'btn btn-primary']);
         echo "</td></tr>";
 
         Html::closeForm();

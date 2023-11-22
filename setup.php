@@ -76,6 +76,7 @@ function plugin_version_wikit()
         'version' => PLUGIN_WIKIT_VERSION,
         'author' => '<a href="https://blogglpi.infotel.com">Infotel</a>',
         'license' => 'GPL v2+',
+        'logo_url' => 'http://localhost/glpi10/plugins/wikit/wikit.png',
         'homepage' => 'https://blogglpi.infotel.com',
         'requirements' => [
             'glpi' => [

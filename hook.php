@@ -31,6 +31,17 @@ function plugin_wikit_install()
 
     if (!$DB->tableExists("glpi_plugin_wikit_configs")) {
         $DB->runFile(PLUGIN_STOCKVIEW_DIR . "/install/sql/empty-1.0.0.sql");
+        $description_text = __('A problem ? Ask me your question ??', 'wikit');
+        $home_description_text = __('Welcome to the digital service center!', 'wikit');
+        $close_text = __('Close the window', 'wikit');
+        $open_newwindow_text = __('Open in new tab', 'wikit');
+        $maximize_text = __('Enlarge window', 'wikit');
+        $minimize_text = __('Shrink window', 'wikit');
+            
+        $query = "INSERT INTO `glpi_plugin_wikit_configs` (`id`, `webchattoken`, `display_on_login`, 
+                                         `home_description_text`, `description_text`, `close_text`, `open_newwindow_text`, `maximize_text`, `minimize_text`)
+VALUES ('1', '', 0,'".$home_description_text."','".$description_text."','".$close_text."','".$open_newwindow_text."','".$maximize_text."','".$minimize_text."');";
+        $DB->query($query);
     }
 
     return true;

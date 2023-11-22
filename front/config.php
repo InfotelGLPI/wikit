@@ -31,9 +31,7 @@ global $CFG_GLPI;
 
 if (Plugin::isPluginActive("wikit")) {
     if (Session::haveRight("config", UPDATE)) {
-        Html::header(__('Setup', 'wikit'), '', "config", "pluginwikitmenu", "config");
-
-        Html::footer();
+        Html::redirect("config.form.php");
     } else {
         Html::displayRightError();
     }
