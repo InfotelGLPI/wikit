@@ -70,7 +70,10 @@ class PluginWikitConfig extends CommonDBTM
         echo "<td>";
         echo Html::input('webchattoken', ['value' => $this->fields['webchattoken'], 'size' => 100]);
         echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
 
+        echo "<tr class='tab_bg_1'>";
         echo "<td>" . __('Display on login', 'wikit') . "</td>";
         echo "<td>";
         Dropdown::showYesNo('display_on_login', is_numeric($this->getField('display_on_login')) ? $this->getField('display_on_login') : 1);

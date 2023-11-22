@@ -51,7 +51,7 @@ function plugin_init_wikit()
     $PLUGIN_HOOKS['csrf_compliant']['wikit'] = true;
 
     $PLUGIN_HOOKS['add_javascript']['wikit'] = [
-        'js/connection.js.php',
+        'js/wikit.js.php',
     ];
 
     if (Session::haveRight("config", UPDATE)) {

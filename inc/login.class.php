@@ -69,6 +69,11 @@ class PluginWikitLogin extends CommonDBTM
                             textColor: "#FFFFFF",
                             visibility: "hidden",
                         },
+//                        chatButtonAnimation: { // Animation du bouton de chat
+//                            delay: null, // Délais en millisecondes après lequel le bouton s"anime
+//                            enabled: true, // Active l"animation
+//                            openTooltip: true // Ouvre l"info-bulle après l"animation
+//                        },
                         headerButtons: {
                             color: "#fff",
                             closeIconDescription: "' . $close_text . '",
@@ -77,8 +82,8 @@ class PluginWikitLogin extends CommonDBTM
                             minimizeIconDescription: "' . $minimize_text . '",
                         },
                         opening: {
-                            mode: "delay",
-                            delay: 7000,
+                            mode: "open",
+                            delay: null,
                             memorize: true,
                         },
                         position: {

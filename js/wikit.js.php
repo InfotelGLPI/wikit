@@ -7,6 +7,8 @@ header('Content-Type: text/javascript');
 $user = new User();
 $user->getFromDB(Session::getLoginUserID());
 $userLogin = $user->fields['name'] ?? 'anonymous';
+$firstname = $user->fields['firstname'] ?? 'anonymous';
+$realname = $user->fields['realname'] ?? 'anonymous';
 $config = new PluginWikitConfig();
 $config->getFromDB(1);
 $webChatToken = $config->fields['webchattoken'];
@@ -15,7 +17,7 @@ $close_text = $config->fields['close_text'] ?? __('Close the window', 'wikit');
 $open_newwindow_text = $config->fields['open_newwindow_text'] ?? __('Open in new tab', 'wikit');
 $maximize_text = $config->fields['maximize_text'] ?? __('Enlarge window', 'wikit');
 $minimize_text = $config->fields['minimize_text'] ?? __('Shrink window', 'wikit');
-Toolbox::logInfo($description_text);
+
 ?>
 
 function loadScript(url, callback)
@@ -36,6 +38,8 @@ function loadScript(url, callback)
 }
 
 var userLogin = "<?php echo $userLogin ?>";
+var userFirstname = "<?php echo $firstname ?>";
+var userRealname = "<?php echo $realname ?>";
 var webChatToken = "<?php echo $webChatToken ?>";
 var description_text = "<?php echo $description_text ?>";
 var close_text = "<?php $close_text ?>";
@@ -51,8 +55,8 @@ var loadWebChat = function() {
         webchatParams: {
             userId: userLogin,
             userIdType: "login",
-            userFirstName: "",
-            userLastName: "",
+            userFirstName: userFirstname,
+            userLastName: userRealname,
             webChatToken: webChatToken,
             originId: "GLPI",
         },
@@ -72,6 +76,11 @@ var loadWebChat = function() {
             textColor: "#FFFFFF",
             visibility: "hidden",
         },
+        //chatButtonAnimation: { // Animation du bouton de chat
+        //    delay: null, // Délais en millisecondes après lequel le bouton s"anime
+        //    enabled: true, // Active l"animation
+        //    openTooltip: true // Ouvre l"info-bulle après l"animation
+        //},
         headerButtons: {
             color: "#fff",
             closeIconDescription: close_text,
@@ -80,7 +89,7 @@ var loadWebChat = function() {
             minimizeIconDescription: minimize_text,
         },
         opening: {
-            mode: "close",
+            mode: "open",
             delay: null,
             memorize: true,
         },
