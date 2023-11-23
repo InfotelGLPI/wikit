@@ -30,7 +30,7 @@ function plugin_wikit_install()
     global $DB;
 
     if (!$DB->tableExists("glpi_plugin_wikit_configs")) {
-        $DB->runFile(PLUGIN_STOCKVIEW_DIR . "/install/sql/empty-1.0.0.sql");
+        $DB->runFile(PLUGIN_WIKIT_DIR . "/install/sql/empty-1.0.0.sql");
         $description_text = __('A problem ? Ask me your question ??', 'wikit');
         $home_description_text = __('Welcome to the digital service center!', 'wikit');
         $close_text = __('Close the window', 'wikit');
@@ -58,7 +58,7 @@ function plugin_wikit_uninstall()
     global $DB;
 
     // Plugin tables deletion
-    $tables = ["glpi_plugin_wikit_configss"];
+    $tables = ["glpi_plugin_wikit_configs"];
 
     foreach ($tables as $table) {
         $DB->query("DROP TABLE IF EXISTS `$table`;");

@@ -58,6 +58,7 @@ function plugin_init_wikit()
         $PLUGIN_HOOKS['config_page']['wikit'] = 'front/config.form.php';
     }
 
+    $PLUGIN_HOOKS['add_css']['wikit'][] = "css/wikit.css";
     $PLUGIN_HOOKS['display_login']['wikit'] = "plugin_wikit_display_login";
     
 }

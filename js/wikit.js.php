@@ -89,7 +89,7 @@ var loadWebChat = function() {
             minimizeIconDescription: minimize_text,
         },
         opening: {
-            mode: "open",
+            mode: "close",
             delay: null,
             memorize: true,
         },

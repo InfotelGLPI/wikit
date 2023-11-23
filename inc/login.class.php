@@ -70,7 +70,7 @@ class PluginWikitLogin extends CommonDBTM
                             visibility: "hidden",
                         },
                         chatButtonAnimation: { // Animation du bouton de chat
-                            delay: null, // Délais en millisecondes après lequel le bouton s"anime
+                            delay: 300, // Délais en millisecondes après lequel le bouton s"anime
                             enabled: true, // Active l"animation
                             openTooltip: true // Ouvre l"info-bulle après l"animation
                         },
@@ -82,7 +82,7 @@ class PluginWikitLogin extends CommonDBTM
                             minimizeIconDescription: "' . $minimize_text . '",
                         },
                         opening: {
-                            mode: "open",
+                            mode: "close",
                             delay: null,
                             memorize: true,
                         },
