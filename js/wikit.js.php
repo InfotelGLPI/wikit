@@ -18,6 +18,16 @@ $open_newwindow_text = $config->fields['open_newwindow_text'] ?? __('Open in new
 $maximize_text = $config->fields['maximize_text'] ?? __('Enlarge window', 'wikit');
 $minimize_text = $config->fields['minimize_text'] ?? __('Shrink window', 'wikit');
 
+if (isset($_SERVER['HTTP_REFERER'])
+    && strpos($_SERVER['HTTP_REFERER'], "displaypreference") !== false) {
+    exit;
+}
+
+if (isset($_SERVER['HTTP_REFERER'])
+    && strpos($_SERVER['HTTP_REFERER'], "ticket.form.php") !== false) {
+    exit;
+}
+
 ?>
 
 function loadScript(url, callback)
