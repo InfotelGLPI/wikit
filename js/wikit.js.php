@@ -69,12 +69,14 @@ var loadWebChat = function() {
             userLastName: userRealname,
             webChatToken: webChatToken,
             originId: "GLPI",
+            customParams: {},
+            persona: "Navy",//TODO config persona NAvy par defaut
         },
         height: "80%",
         width: "30%",
         chatButtonIcon: {
             url: "https://wikit-files-hpg.s3.eu-de.objectstorage.softlayer.net/1657139091885-Neo.png",
-            //url: "https://www.awelty.fr/medias/images/chatbot-illustration-etapes-awelty.png",
+            //url: "https://wikit-marcom-website-images.s3.eu-de.cloud-object-storage.appdomain.cloud/avatar-neo-default.png",
             altText: "Bob",
             height: "100px",
             width: "100px",
@@ -104,7 +106,7 @@ var loadWebChat = function() {
             memorize: true,
         },
         position: {
-            right: "1rem",
+            left: "1rem",
             bottom: "1rem",
         },
     });

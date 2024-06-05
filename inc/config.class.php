@@ -128,6 +128,7 @@ class PluginWikitConfig extends CommonDBTM
         echo "<td colspan='2'></td>";
         echo "</tr>";
 
+        //https://www.wikit.ai/ressources/catalogue-avatar-chatbot
         //TODO Add params to translation ?
 
         echo "<tr><td class='tab_bg_2 center' colspan='6'>";
