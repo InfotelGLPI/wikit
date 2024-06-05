@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Badges Development Team
-# This file is distributed under the same license as the GLPI - Badges plugin package.
+# Copyright (C) YEAR Wikit Development Team
+# This file is distributed under the same license as the GLPI - Wikit plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Xavier CAILLAUD <thetsmr@gmail.com>, 2020
-#
+# Xavier CAILLAUD <thetsmr@gmail.com>, 2024
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Wikit plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-05 17:32+0200\n"
-"PO-Revision-Date: 2024-06-05 17:33+0200\n"
-"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
-"Language-Team: French (France) (https://www.transifex.com/infotelGLPI/"
-"teams/12355/fr_FR/)\n"
-"Language: fr_FR\n"
+"PO-Revision-Date: 2024-06-05 15:52+0000\n"
+"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2024\n"
+"Language-Team: French (France) (https://app.transifex.com/infotelGLPI/teams/193492/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: hook.php:34
 msgid "A problem ? Ask me your question ??"
