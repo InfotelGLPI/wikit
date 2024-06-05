@@ -17,6 +17,8 @@ $close_text = $config->fields['close_text'] ?? __('Close the window', 'wikit');
 $open_newwindow_text = $config->fields['open_newwindow_text'] ?? __('Open in new tab', 'wikit');
 $maximize_text = $config->fields['maximize_text'] ?? __('Enlarge window', 'wikit');
 $minimize_text = $config->fields['minimize_text'] ?? __('Shrink window', 'wikit');
+$persona = $config->fields['persona'];
+$icon_url = $config->fields['icon_url'];
 
 if (isset($_SERVER['HTTP_REFERER'])
     && strpos($_SERVER['HTTP_REFERER'], "displaypreference") !== false) {
@@ -56,6 +58,8 @@ var close_text = "<?php $close_text ?>";
 var open_newwindow_text = "<?php echo $open_newwindow_text ?>";
 var maximize_text = "<?php echo $maximize_text ?>";
 var minimize_text = "<?php echo $minimize_text ?>";
+var persona = "<?php echo $persona ?>";
+var icon_url = "<?php echo $icon_url ?>";
 
 //------ Wikit integration (D87 / Bob) ------
 
@@ -70,12 +74,12 @@ var loadWebChat = function() {
             webChatToken: webChatToken,
             originId: "GLPI",
             customParams: {},
-            persona: "Navy",//TODO config persona NAvy par defaut
+            persona: persona,
         },
         height: "80%",
         width: "30%",
         chatButtonIcon: {
-            url: "https://wikit-files-hpg.s3.eu-de.objectstorage.softlayer.net/1657139091885-Neo.png",
+            url: icon_url,
             //url: "https://wikit-marcom-website-images.s3.eu-de.cloud-object-storage.appdomain.cloud/avatar-neo-default.png",
             altText: "Bob",
             height: "100px",

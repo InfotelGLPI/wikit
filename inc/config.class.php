@@ -128,8 +128,22 @@ class PluginWikitConfig extends CommonDBTM
         echo "<td colspan='2'></td>";
         echo "</tr>";
 
-        //https://www.wikit.ai/ressources/catalogue-avatar-chatbot
-        //TODO Add params to translation ?
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Persona", 'wikit') . "</td>";
+        echo "<td>";
+        echo Html::input('persona', ['value' => $this->fields['persona'], 'size' => 100]);
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Avatar URL", 'wikit') . "</td>";
+        echo "<td>";
+        echo Html::input('icon_url', ['value' => $this->fields['icon_url'], 'size' => 100]);
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
 
         echo "<tr><td class='tab_bg_2 center' colspan='6'>";
         echo Html::submit(_sx('button', 'Post'), ['name' => 'update', 'class' => 'btn btn-primary']);

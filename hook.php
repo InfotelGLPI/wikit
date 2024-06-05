@@ -37,12 +37,18 @@ function plugin_wikit_install()
         $open_newwindow_text = __('Open in new tab', 'wikit');
         $maximize_text = __('Enlarge window', 'wikit');
         $minimize_text = __('Shrink window', 'wikit');
-            
+        $persona = "Navy";
+        $icon_url = "";
+
         $query = "INSERT INTO `glpi_plugin_wikit_configs` (`id`, `webchattoken`, `display_on_login`, 
                                          `home_description_text`, `description_text`, `close_text`, `open_newwindow_text`, `maximize_text`, `minimize_text`)
-VALUES ('1', '', 0,'".$home_description_text."','".$description_text."','".$close_text."','".$open_newwindow_text."','".$maximize_text."','".$minimize_text."');";
+VALUES ('1', '', 0,'".$home_description_text."','".$description_text."','".$close_text."','".$open_newwindow_text."','".$maximize_text."','".$minimize_text."'
+,'".$persona."','".$icon_url."');";
         $DB->query($query);
     }
+
+//    ALTER TABLE `glpi_plugin_wikit_configs` ADD `persona` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Navy';
+//    ALTER TABLE `glpi_plugin_wikit_configs` ADD `icon_url` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL;
 
     return true;
 }
