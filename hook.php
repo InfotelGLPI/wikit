@@ -40,9 +40,20 @@ function plugin_wikit_install()
         $persona = "Navy";
         $icon_url = "";
 
-        $query = "INSERT INTO `glpi_plugin_wikit_configs` (`id`, `webchattoken`, `display_on_login`, 
-                                         `home_description_text`, `description_text`, `close_text`, `open_newwindow_text`, `maximize_text`, `minimize_text`)
-VALUES ('1', '', 0,'".$home_description_text."','".$description_text."','".$close_text."','".$open_newwindow_text."','".$maximize_text."','".$minimize_text."'
+        $query = "INSERT INTO `glpi_plugin_wikit_configs` (`id`, 
+                                         `webchattoken`, 
+                                         `display_on_login`, 
+                                         `home_description_text`, 
+                                         `description_text`, 
+                                         `close_text`, 
+                                         `open_newwindow_text`, 
+                                         `maximize_text`, 
+                                         `minimize_text`,
+                                         `persona`,
+                                         `icon_url`)
+VALUES ('1', '', 0,'".$home_description_text."',
+'".$description_text."',
+'".$close_text."','".$open_newwindow_text."','".$maximize_text."','".$minimize_text."'
 ,'".$persona."','".$icon_url."');";
         $DB->query($query);
     }
