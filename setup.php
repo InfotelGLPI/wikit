@@ -25,7 +25,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_WIKIT_VERSION', '1.0.0');
+define('PLUGIN_WIKIT_VERSION', '1.1.0');
 
 // Minimal GLPI version, inclusive
 define("PLUGIN_WIKIT_MIN_GLPI", "10.0.0");
@@ -54,11 +54,14 @@ function plugin_init_wikit()
         'js/wikit.js.php',
     ];
 
+    $PLUGIN_HOOKS['add_css']['wikit'] = [
+        'css/wikit.css.php',
+    ];
+
     if (Session::haveRight("config", UPDATE)) {
         $PLUGIN_HOOKS['config_page']['wikit'] = 'front/config.form.php';
     }
 
-    $PLUGIN_HOOKS['add_css']['wikit'][] = "css/wikit.css";
     $PLUGIN_HOOKS['display_login']['wikit'] = "plugin_wikit_display_login";
     
 }

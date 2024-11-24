@@ -144,6 +144,92 @@ class PluginWikitConfig extends CommonDBTM
         echo "<td colspan='2'></td>";
         echo "</tr>";
 
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Width", 'wikit') . "</td>";
+        echo "<td>";
+        $optionNumber = [
+            'value' => $this->fields['width'],
+            'min'   => 25,
+            'max'   => 100,
+            'step'  => 25,
+        ];
+        Dropdown::showNumber('width', $optionNumber);
+        echo " px";
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Height", 'wikit') . "</td>";
+        echo "<td>";
+        $optionNumber = [
+            'value' => $this->fields['height'],
+            'min'   => 25,
+            'max'   => 100,
+            'step'  => 25,
+        ];
+        Dropdown::showNumber('height', $optionNumber);
+        echo " px";
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Top", 'wikit') . "</td>";
+        echo "<td>";
+        $optionNumber = [
+            'value' => $this->fields['top'],
+            'min'   => 1,
+            'max'   => 100,
+        ];
+        Dropdown::showNumber('top', $optionNumber);
+        echo " %";
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Bottom", 'wikit') . "</td>";
+        echo "<td>";
+        $optionNumber = [
+            'value' => $this->fields['bottom'],
+            'min'   => 1,
+            'max'   => 100,
+        ];
+        Dropdown::showNumber('bottom', $optionNumber);
+        echo " %";
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Left", 'wikit') . "</td>";
+        echo "<td>";
+        $optionNumber = [
+            'value' => $this->fields['left'],
+            'min'   => 1,
+            'max'   => 100,
+        ];
+        Dropdown::showNumber('left', $optionNumber);
+        echo " %";
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Right", 'wikit') . "</td>";
+        echo "<td>";
+        $optionNumber = [
+            'value' => $this->fields['right'],
+            'min'   => 1,
+            'max'   => 100,
+        ];
+        Dropdown::showNumber('right', $optionNumber);
+        echo " %";
+        echo "</td>";
+        echo "<td colspan='2'></td>";
+        echo "</tr>";
+
 
         echo "<tr><td class='tab_bg_2 center' colspan='6'>";
         echo Html::submit(_sx('button', 'Post'), ['name' => 'update', 'class' => 'btn btn-primary']);

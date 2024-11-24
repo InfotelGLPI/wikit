@@ -31,6 +31,17 @@ function plugin_wikit_install()
 
     if (!$DB->tableExists("glpi_plugin_wikit_configs")) {
         $DB->runFile(PLUGIN_WIKIT_DIR . "/install/sql/empty-1.0.0.sql");
+
+        if (!$DB->fieldExists("glpi_plugin_wikit_configs", "persona", false)) {
+            $query = "ALTER TABLE `glpi_plugin_wikit_configs` ADD `persona` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Navy';";
+            $DB->doQuery($query);
+        }
+
+        if (!$DB->fieldExists("glpi_plugin_wikit_configs", "icon_url", false)) {
+            $query = "ALTER TABLE `glpi_plugin_wikit_configs` ADD `icon_url` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL;";
+            $DB->doQuery($query);
+        }
+
         $description_text = __('A problem ? Ask me your question ??', 'wikit');
         $home_description_text = __('Welcome to the digital service center!', 'wikit');
         $close_text = __('Close the window', 'wikit');
@@ -39,6 +50,12 @@ function plugin_wikit_install()
         $minimize_text = __('Shrink window', 'wikit');
         $persona = "Navy";
         $icon_url = "";
+        $width = "50px";
+        $height = "50px";
+        $top = "93%";
+        $bottom = "7%";
+        $left = "97%";
+        $right = "3%";
 
         $query = "INSERT INTO `glpi_plugin_wikit_configs` (`id`, 
                                          `webchattoken`, 
@@ -50,16 +67,31 @@ function plugin_wikit_install()
                                          `maximize_text`, 
                                          `minimize_text`,
                                          `persona`,
-                                         `icon_url`)
-VALUES ('1', '', 0,'".$home_description_text."',
-'".$description_text."',
-'".$close_text."','".$open_newwindow_text."','".$maximize_text."','".$minimize_text."'
-,'".$persona."','".$icon_url."');";
-        $DB->query($query);
+                                         `icon_url`,
+                                         `width`,
+                                         `height`,
+                                         `top`,
+                                         `bottom`,
+                                         `left`,
+                                         `right`)
+VALUES ('1', '', 0,'" . $home_description_text . "',
+'" . $description_text . "',
+'" . $close_text . "','" . $open_newwindow_text . "','" . $maximize_text . "','" . $minimize_text . "'
+,'" . $persona . "','" . $icon_url . "','" . $width . "','" . $height . "','" . $top . "','" . $bottom . "','" . $left . "','" . $right . "');";
+        $DB->doQuery($query);
+    } elseif (!$DB->fieldExists("glpi_plugin_wikit_configs", "width")) {
+        $DB->runFile(PLUGIN_WIKIT_DIR . "/install/sql/update-1.1.0.sql");
     }
 
-//    ALTER TABLE `glpi_plugin_wikit_configs` ADD `persona` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Navy';
-//    ALTER TABLE `glpi_plugin_wikit_configs` ADD `icon_url` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL;
+    if (!$DB->fieldExists("glpi_plugin_wikit_configs", "persona", false)) {
+        $query = "ALTER TABLE `glpi_plugin_wikit_configs` ADD `persona` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Navy';";
+        $DB->doQuery($query);
+    }
+
+    if (!$DB->fieldExists("glpi_plugin_wikit_configs", "icon_url", false)) {
+        $query = "ALTER TABLE `glpi_plugin_wikit_configs` ADD `icon_url` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL;";
+        $DB->doQuery($query);
+    }
 
     return true;
 }

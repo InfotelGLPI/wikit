@@ -19,6 +19,8 @@ $maximize_text = $config->fields['maximize_text'] ?? __('Enlarge window', 'wikit
 $minimize_text = $config->fields['minimize_text'] ?? __('Shrink window', 'wikit');
 $persona = $config->fields['persona'];
 $icon_url = $config->fields['icon_url'];
+$width = $config->fields['width'];
+$height = $config->fields['height'];
 
 if (isset($_SERVER['HTTP_REFERER'])
     && strpos($_SERVER['HTTP_REFERER'], "displaypreference") !== false) {
@@ -29,6 +31,13 @@ if (isset($_SERVER['HTTP_REFERER'])
     && strpos($_SERVER['HTTP_REFERER'], "ticket.form.php") !== false) {
     exit;
 }
+
+if (isset($_SERVER['HTTP_REFERER'])
+    && strpos($_SERVER['HTTP_REFERER'], "ticketcheck.form.php") !== false) {
+    exit;
+}
+
+Html::css(PLUGIN_WIKIT_DIR_NOFULL . "/css/wikit.css.php");
 
 ?>
 
@@ -60,6 +69,8 @@ var maximize_text = "<?php echo $maximize_text ?>";
 var minimize_text = "<?php echo $minimize_text ?>";
 var persona = "<?php echo $persona ?>";
 var icon_url = "<?php echo $icon_url ?>";
+var width_avatar = "<?php echo $width ?>px";
+var height_avatar = "<?php echo $height ?>px";
 
 //------ Wikit integration (D87 / Bob) ------
 
@@ -82,8 +93,8 @@ var loadWebChat = function() {
             url: icon_url,
             //url: "https://wikit-marcom-website-images.s3.eu-de.cloud-object-storage.appdomain.cloud/avatar-neo-default.png",
             altText: "Bob",
-            height: "100px",
-            width: "100px",
+            height: height_avatar,
+            width: width_avatar,
             borderRadius: "50%",
         },
         chatButtonTooltip: {
@@ -111,7 +122,7 @@ var loadWebChat = function() {
         },
         position: {
             left: "1rem",
-            bottom: "1rem",
+            top: "1rem",
         },
     });
 }
