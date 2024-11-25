@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Wikit plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-02 14:39+0000\n"
+"POT-Creation-Date: 2024-11-24 08:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: hook.php:34
+#: hook.php:45
 msgid "A problem ? Ask me your question ??"
 msgstr ""
 
-#: hook.php:35 inc/login.class.php:39
+#: hook.php:46 inc/login.class.php:39
 msgid "Welcome to the digital service center!"
 msgstr ""
 
-#: hook.php:36 inc/login.class.php:40 js/wikit.js.php:16
+#: hook.php:47 inc/login.class.php:40 js/wikit.js.php:16
 msgid "Close the window"
 msgstr ""
 
-#: hook.php:37 inc/login.class.php:41 js/wikit.js.php:17
+#: hook.php:48 inc/login.class.php:41 js/wikit.js.php:17
 msgid "Open in new tab"
 msgstr ""
 
-#: hook.php:38 inc/login.class.php:42 js/wikit.js.php:18
+#: hook.php:49 inc/login.class.php:42 js/wikit.js.php:18
 msgid "Enlarge window"
 msgstr ""
 
-#: hook.php:39 inc/login.class.php:43 js/wikit.js.php:19
+#: hook.php:50 inc/login.class.php:43 js/wikit.js.php:19
 msgid "Shrink window"
 msgstr ""
 
@@ -91,6 +91,30 @@ msgstr ""
 
 #: inc/config.class.php:140
 msgid "Avatar URL"
+msgstr ""
+
+#: inc/config.class.php:148
+msgid "Width"
+msgstr ""
+
+#: inc/config.class.php:163
+msgid "Height"
+msgstr ""
+
+#: inc/config.class.php:178
+msgid "Top"
+msgstr ""
+
+#: inc/config.class.php:192
+msgid "Bottom"
+msgstr ""
+
+#: inc/config.class.php:206
+msgid "Left"
+msgstr ""
+
+#: inc/config.class.php:220
+msgid "Right"
 msgstr ""
 
 #: js/wikit.js.php:15
