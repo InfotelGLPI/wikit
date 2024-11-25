@@ -110,7 +110,7 @@ function plugin_wikit_uninstall()
     $tables = ["glpi_plugin_wikit_configs"];
 
     foreach ($tables as $table) {
-        $DB->query("DROP TABLE IF EXISTS `$table`;");
+        $DB->dropTable($table);
     }
 }
 
