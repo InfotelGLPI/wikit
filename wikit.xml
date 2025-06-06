@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <name>Wikit</name>
+    <name>Wikit ChatBot</name>
     <key>wikit</key>
     <state>stable</state>
     <logo>https://raw.githubusercontent.com/InfotelGLPI/wikit/master/wikit.png</logo>
