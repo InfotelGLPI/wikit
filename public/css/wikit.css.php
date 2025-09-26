@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/css; charset: UTF-8");
-include('../../../inc/includes.php');
+
 $config = new PluginWikitConfig();
 $config->getFromDB(1);
 $top = $config->fields['top'];

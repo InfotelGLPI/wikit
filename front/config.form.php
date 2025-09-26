@@ -25,7 +25,6 @@
  --------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
 
 if (!isset($_GET["id"])) {
     $_GET["id"] = "1";
@@ -49,7 +48,7 @@ if (Plugin::isPluginActive("wikit")) {
         Html::footer();
     }
 } else {
-    Html::header(__('Setup'), '', "config", "plugins");
+    Html::header(__('Setup'), '', "config", "plugin");
     echo "<div class='alert alert-important alert-warning d-flex'>";
     echo "<b>" . __('Please activate the plugin', 'wikit') . "</b></div>";
     Html::footer();

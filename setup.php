@@ -25,17 +25,22 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_WIKIT_VERSION', '1.1.1');
+global $CFG_GLPI;
+
+use Glpi\Plugin\Hooks;
+
+define('PLUGIN_WIKIT_VERSION', '2.0.0');
 
 // Minimal GLPI version, inclusive
-define("PLUGIN_WIKIT_MIN_GLPI", "10.0.0");
+define("PLUGIN_WIKIT_MIN_GLPI", "11");
 // Maximum GLPI version, exclusive
-define("PLUGIN_WIKIT_MAX_GLPI", "10.0.99");
+define("PLUGIN_WIKIT_MAX_GLPI", "12");
 
 if (!defined("PLUGIN_WIKIT_DIR")) {
     define("PLUGIN_WIKIT_DIR", Plugin::getPhpDir("wikit"));
     define("PLUGIN_WIKIT_DIR_NOFULL", Plugin::getPhpDir("wikit", false));
-    define("PLUGIN_WIKIT_WEBDIR", Plugin::getWebDir("wikit"));
+    $root = $CFG_GLPI['root_doc'] . '/plugins/wikit';
+    define("PLUGIN_WIKIT_WEBDIR", $root);
 }
 
 /**
@@ -50,11 +55,11 @@ function plugin_init_wikit()
 
     $PLUGIN_HOOKS['csrf_compliant']['wikit'] = true;
 
-    $PLUGIN_HOOKS['add_javascript']['wikit'] = [
+    $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT]['wikit'] = [
         'js/wikit.js.php',
     ];
 
-    $PLUGIN_HOOKS['add_css']['wikit'] = [
+    $PLUGIN_HOOKS[Hooks::ADD_CSS]['wikit'] = [
         'css/wikit.css.php',
     ];
 

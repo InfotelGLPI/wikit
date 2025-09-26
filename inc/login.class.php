@@ -28,7 +28,7 @@
 class PluginWikitLogin extends CommonDBTM
 {
 
-    static function displayWebChat()
+    public static function displayWebChat()
     {
         // Wikit (to refactor in a lovely GLPI plugin)
         $userLogin = 'anonymous';
@@ -36,7 +36,10 @@ class PluginWikitLogin extends CommonDBTM
         $config->getFromDB(1);
         if ($config->fields['display_on_login'] == 1) {
             $webChatToken = $config->fields['webchattoken'];
-            $description_text = $config->fields['home_description_text'] ?? __('Welcome to the digital service center!', 'wikit');
+            $description_text = $config->fields['home_description_text'] ?? __(
+                'Welcome to the digital service center!',
+                'wikit'
+            );
             $close_text = $config->fields['close_text'] ?? __('Close the window', 'wikit');
             $open_newwindow_text = $config->fields['open_newwindow_text'] ?? __('Open in new tab', 'wikit');
             $maximize_text = $config->fields['maximize_text'] ?? __('Enlarge window', 'wikit');
@@ -93,6 +96,5 @@ class PluginWikitLogin extends CommonDBTM
                     });
                 </script>';
         }
-
     }
 }

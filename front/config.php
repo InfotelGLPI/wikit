@@ -25,15 +25,17 @@
  --------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
+
 
 global $CFG_GLPI;
+
+use Glpi\Exception\Http\AccessDeniedHttpException;
 
 if (Plugin::isPluginActive("wikit")) {
     if (Session::haveRight("config", UPDATE)) {
         Html::redirect("config.form.php");
     } else {
-        Html::displayRightError();
+        throw new AccessDeniedHttpException();
     }
 } else {
     Html::header(__('Setup'), '', "config", "plugins");

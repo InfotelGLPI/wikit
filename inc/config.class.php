@@ -45,13 +45,13 @@ class PluginWikitConfig extends CommonDBTM
         }
     }
 
-    public static function canView()
+    public static function canView(): bool
     {
         return (Session::haveRight(self::$rightname, UPDATE));
     }
 
 
-    public static function canCreate()
+    public static function canCreate(): bool
     {
         return (Session::haveRight(self::$rightname, CREATE));
     }
@@ -237,6 +237,9 @@ class PluginWikitConfig extends CommonDBTM
 
         Html::closeForm();
     }
-}
 
-?>
+    public static function getIcon()
+    {
+        return "ti ti-brand-hipchat";
+    }
+}
