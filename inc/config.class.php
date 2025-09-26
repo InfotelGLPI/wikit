@@ -238,9 +238,8 @@ class PluginWikitConfig extends CommonDBTM
         Html::closeForm();
     }
 
-    static function getIcon() {
+    public static function getIcon()
+    {
         return "ti ti-brand-hipchat";
     }
 }
-
-?>
