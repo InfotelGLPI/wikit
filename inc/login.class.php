@@ -1,7 +1,7 @@
 <?php
 /*
  -------------------------------------------------------------------------
- Ewikit plugin for GLPI
+ Wikit plugin for GLPI
  Copyright (C) 2021-2022 by the Ewikit Development Team.
 
  -------------------------------------------------------------------------

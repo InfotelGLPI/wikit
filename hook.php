@@ -1,7 +1,7 @@
 <?php
 /*
  -------------------------------------------------------------------------
- Ewikit plugin for GLPI
+ Wikit plugin for GLPI
  Copyright (C) 2021-2022 by the Ewikit Development Team.
 
  -------------------------------------------------------------------------
@@ -92,7 +92,7 @@ function plugin_wikit_uninstall()
     $tables = ["glpi_plugin_wikit_configs"];
 
     foreach ($tables as $table) {
-        $DB->dropTable($table);
+        $DB->dropTable($table, true);
     }
 }
 
