@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Wikit plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-26 16:57+0000\n"
+"POT-Creation-Date: 2025-10-01 15:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,78 +41,78 @@ msgstr ""
 msgid "Shrink window"
 msgstr ""
 
-#: front/config.form.php:46
+#: front/config.form.php:45
 msgid "Setup"
 msgstr ""
 
-#: front/config.form.php:53 front/config.php:43
+#: front/config.form.php:52 front/config.php:41
 msgid "Please activate the plugin"
 msgstr ""
 
-#: inc/config.class.php:36 inc/config.class.php:65
+#: inc/config.class.php:34 inc/config.class.php:63
 msgid "Wikit plugin setup"
 msgstr ""
 
-#: inc/config.class.php:69
+#: inc/config.class.php:67
 msgid "Web Chat Token"
 msgstr ""
 
-#: inc/config.class.php:77
+#: inc/config.class.php:75
 msgid "Display on login"
 msgstr ""
 
-#: inc/config.class.php:84
+#: inc/config.class.php:82
 msgid "Home description text"
 msgstr ""
 
-#: inc/config.class.php:92
+#: inc/config.class.php:90
 msgid "Description text"
 msgstr ""
 
-#: inc/config.class.php:100
+#: inc/config.class.php:98
 msgid "Closing window text"
 msgstr ""
 
-#: inc/config.class.php:108
+#: inc/config.class.php:106
 msgid "Open new window text"
 msgstr ""
 
-#: inc/config.class.php:116
+#: inc/config.class.php:114
 msgid "Maximize window text"
 msgstr ""
 
-#: inc/config.class.php:124
+#: inc/config.class.php:122
 msgid "Minimize window text"
 msgstr ""
 
-#: inc/config.class.php:132
+#: inc/config.class.php:130
 msgid "Persona"
 msgstr ""
 
-#: inc/config.class.php:140
+#: inc/config.class.php:138
 msgid "Avatar URL"
 msgstr ""
 
-#: inc/config.class.php:148
+#: inc/config.class.php:146
 msgid "Width"
 msgstr ""
 
-#: inc/config.class.php:163
+#: inc/config.class.php:161
 msgid "Height"
 msgstr ""
 
-#: inc/config.class.php:178
+#: inc/config.class.php:176
 msgid "Top"
 msgstr ""
 
-#: inc/config.class.php:192
+#: inc/config.class.php:190
 msgid "Bottom"
 msgstr ""
 
-#: inc/config.class.php:206
+#: inc/config.class.php:204
 msgid "Left"
 msgstr ""
 
-#: inc/config.class.php:220
+#: inc/config.class.php:218
 msgid "Right"
 msgstr ""
