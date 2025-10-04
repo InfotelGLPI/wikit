@@ -1,4 +1,5 @@
 <?php
+
 /*
  -------------------------------------------------------------------------
  Wikit plugin for GLPI
@@ -83,7 +84,7 @@ function plugin_version_wikit()
     return [
         'name' => 'Wikit',
         'version' => PLUGIN_WIKIT_VERSION,
-        'author' => '<a href="https://blogglpi.infotel.com">Infotel</a>',
+        'author' => "<a href='https://blogglpi.infotel.com'>Infotel</a>, Xavier CAILLAUD",
         'license' => 'GPL v2+',
         'logo_url' => 'http://localhost/glpi10/plugins/wikit/wikit.png',
         'homepage' => 'https://blogglpi.infotel.com',
@@ -92,6 +93,6 @@ function plugin_version_wikit()
                 'min' => PLUGIN_WIKIT_MIN_GLPI,
                 'max' => PLUGIN_WIKIT_MAX_GLPI,
             ],
-        ]
+        ],
     ];
 }
