@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xavier CAILLAUD <thetsmr@gmail.com>, 2024
+# Xavier CAILLAUD <thetsmr@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Wikit plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-05 16:18+0000\n"
+"POT-Creation-Date: 2025-10-22 12:28+0000\n"
 "PO-Revision-Date: 2024-06-05 16:28+0000\n"
-"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2024\n"
+"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2025\n"
 "Language-Team: French (France) (https://app.transifex.com/infotelGLPI/teams/193492/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,82 +21,102 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: hook.php:34
+#: hook.php:45
 msgid "A problem ? Ask me your question ??"
 msgstr "Un souci ? Posez moi votre question 😊"
 
-#: hook.php:35 inc/login.class.php:39
+#: hook.php:46 inc/login.class.php:40
 msgid "Welcome to the digital service center!"
 msgstr "Bienvenue au centre de services numériques !"
 
-#: hook.php:36 inc/login.class.php:40 js/wikit.js.php:16
+#: hook.php:47 inc/login.class.php:43
 msgid "Close the window"
 msgstr "Fermer la fenêtre"
 
-#: hook.php:37 inc/login.class.php:41 js/wikit.js.php:17
+#: hook.php:48 inc/login.class.php:44
 msgid "Open in new tab"
 msgstr "Ouvrir dans un nouvel onglet"
 
-#: hook.php:38 inc/login.class.php:42 js/wikit.js.php:18
+#: hook.php:49 inc/login.class.php:45
 msgid "Enlarge window"
 msgstr "Agrandir la fenêtre"
 
-#: hook.php:39 inc/login.class.php:43 js/wikit.js.php:19
+#: hook.php:50 inc/login.class.php:46
 msgid "Shrink window"
 msgstr "Rétrécir la fenêtre"
 
-#: front/config.form.php:47
+#: front/config.form.php:45
 msgid "Setup"
 msgstr "Configuration"
 
-#: front/config.form.php:54 front/config.php:41
+#: front/config.form.php:52 front/config.php:41
 msgid "Please activate the plugin"
 msgstr "Merci d'activer le plugin"
 
-#: inc/config.class.php:36 inc/config.class.php:65
+#: inc/config.class.php:34 inc/config.class.php:63
 msgid "Wikit plugin setup"
 msgstr "Configuration du plugin Wikit"
 
-#: inc/config.class.php:69
+#: inc/config.class.php:67
 msgid "Web Chat Token"
 msgstr "Token pour le WebChat"
 
-#: inc/config.class.php:77
+#: inc/config.class.php:75
 msgid "Display on login"
 msgstr "Afficher sur la page d'accueil"
 
-#: inc/config.class.php:84
+#: inc/config.class.php:82
 msgid "Home description text"
 msgstr "Texte de description sur la page d'accueil"
 
-#: inc/config.class.php:92
+#: inc/config.class.php:90
 msgid "Description text"
 msgstr "Texte de description dans GLPI"
 
-#: inc/config.class.php:100
+#: inc/config.class.php:98
 msgid "Closing window text"
 msgstr "Texte de fermeture de la fenêtre"
 
-#: inc/config.class.php:108
+#: inc/config.class.php:106
 msgid "Open new window text"
 msgstr "Texte d'ouverture de la fenêtre dans un nouvel onglet"
 
-#: inc/config.class.php:116
+#: inc/config.class.php:114
 msgid "Maximize window text"
 msgstr "Texte d'agrandissement de la fenêtre"
 
-#: inc/config.class.php:124
+#: inc/config.class.php:122
 msgid "Minimize window text"
 msgstr "Texte de réduction de la fenêtre"
 
-#: inc/config.class.php:132
+#: inc/config.class.php:130
 msgid "Persona"
 msgstr "Persona"
 
-#: inc/config.class.php:140
+#: inc/config.class.php:138
 msgid "Avatar URL"
 msgstr "URL de l'avatar"
 
-#: js/wikit.js.php:15
-msgid "A problem ? Ask me your question 😊"
-msgstr "Un souci ? Posez moi votre question 😊"
+#: inc/config.class.php:146
+msgid "Width"
+msgstr "Largeur"
+
+#: inc/config.class.php:161
+msgid "Height"
+msgstr "Hauteur"
+
+#: inc/config.class.php:176
+msgid "Top"
+msgstr "Haut"
+
+#: inc/config.class.php:190
+msgid "Bottom"
+msgstr "Bas"
+
+#: inc/config.class.php:204
+msgid "Left"
+msgstr "Gauche"
+
+#: inc/config.class.php:218
+msgid "Right"
+msgstr "Droite"
