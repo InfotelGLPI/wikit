@@ -25,76 +25,19 @@
  --------------------------------------------------------------------------
  */
 
-class PluginWikitLogin extends CommonDBTM
+
+class PluginWikitLogin
 {
 
     public static function displayWebChat()
     {
-        // Wikit (to refactor in a lovely GLPI plugin)
-        $userLogin = 'anonymous';
-        $config = new PluginWikitConfig();
-        $config->getFromDB(1);
-        if ($config->fields['display_on_login'] == 1) {
-            $webChatToken = $config->fields['webchattoken'];
-            $description_text = $config->fields['home_description_text'] ?? __(
-                'Welcome to the digital service center!',
-                'wikit'
-            );
-            $close_text = $config->fields['close_text'] ?? __('Close the window', 'wikit');
-            $open_newwindow_text = $config->fields['open_newwindow_text'] ?? __('Open in new tab', 'wikit');
-            $maximize_text = $config->fields['maximize_text'] ?? __('Enlarge window', 'wikit');
-            $minimize_text = $config->fields['minimize_text'] ?? __('Shrink window', 'wikit');
-
-            echo '<script type="text/javascript" src="https://webchat.wikit.ai/webchat-embed.js"></script>';
-            echo '<script type="text/javascript">
-                    wrapWebchat({
-                        color: "#243469",
-                        webchatParams: {
-                            userId: "' . $userLogin . '",
-                            userIdType: "login",
-                            userFirstName: "",
-                            userLastName: "",
-                            webChatToken: "' . $webChatToken . '",
-                            originId: "GLPI"
-                        },
-                        height: "80%",
-                        width: "30%",
-                        chatButtonIcon: {
-                            url: "https://wikit-files-hpg.s3.eu-de.objectstorage.softlayer.net/1657139091885-Neo.png",
-                            altText: null,
-                            height: "100px",
-                            width: "100px",
-                            borderRadius: "50%",
-                        },
-                        chatButtonTooltip: {
-                            text: "' . $description_text . '",
-                            backgroundColor: "#005091",
-                            textColor: "#FFFFFF",
-                            visibility: "hidden",
-                        },
-                        chatButtonAnimation: { // Animation du bouton de chat
-                            delay: 300, // Délais en millisecondes après lequel le bouton s"anime
-                            enabled: true, // Active l"animation
-                            openTooltip: true // Ouvre l"info-bulle après l"animation
-                        },
-                        headerButtons: {
-                            color: "#fff",
-                            closeIconDescription: "' . $close_text . '",
-                            launchIconDescription: "' . $open_newwindow_text . '",
-                            maximizeIconDescription: "' . $maximize_text . '",
-                            minimizeIconDescription: "' . $minimize_text . '",
-                        },
-                        opening: {
-                            mode: "close",
-                            delay: null,
-                            memorize: true,
-                        },
-                        position: {
-                            right: "1rem",
-                            bottom: "1rem",
-                        },
-                    });
-                </script>';
+        $options = PluginWikitConfig::getWebChatOptions(true);
+        if ($options === null) {
+            return;
         }
+
+        echo '<script type="text/javascript" src="' . htmlescape(PluginWikitConfig::VENDOR_SCRIPT_URL) . '"></script>';
+        // Every config value is emitted as a JSON literal, never between hand-written quotes
+        echo Html::scriptBlock('wrapWebchat(' . PluginWikitConfig::toJs($options) . ');');
     }
 }

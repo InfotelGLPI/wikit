@@ -34,13 +34,140 @@ class PluginWikitConfig extends CommonDBTM
         return __('Wikit plugin setup', 'wikit');
     }
 
-    public function __construct()
-    {
-        global $DB;
+    public const VENDOR_SCRIPT_URL = 'https://webchat.wikit.ai/webchat-embed.js';
 
-        if ($DB->tableExists($this->getTable())) {
-            $this->getFromDB(1);
+    /** Avatar used when no icon URL is configured */
+    public const DEFAULT_ICON_URL = 'https://wikit-files-hpg.s3.eu-de.objectstorage.softlayer.net/1657139091885-Neo.png';
+
+    private const DIMENSION_FIELDS = ['width', 'height', 'top', 'bottom', 'left', 'right'];
+
+    public function prepareInputForUpdate($input)
+    {
+        // Only the single configuration row exists
+        $input['id'] = 1;
+
+        if (isset($input['icon_url']) && $input['icon_url'] !== ''
+            && !Toolbox::isValidWebUrl($input['icon_url'])) {
+            Session::addMessageAfterRedirect(__s('Invalid avatar URL', 'wikit'), false, ERROR);
+            return false;
         }
+        foreach (self::DIMENSION_FIELDS as $field) {
+            if (isset($input[$field])) {
+                $input[$field] = max(0, min(100, (int) $input[$field]));
+            }
+        }
+        if (isset($input['display_on_login'])) {
+            $input['display_on_login'] = (int) (bool) $input['display_on_login'];
+        }
+
+        return $input;
+    }
+
+    /**
+     * Build the options given to the vendor wrapWebchat() function.
+     * Every value is returned raw: the caller has to emit the whole array with json_encode()
+     *
+     * @param bool $on_login options for the unauthenticated login page
+     *
+     * @return array|null null when the widget must not be displayed
+     */
+    public static function getWebChatOptions(bool $on_login = false): ?array
+    {
+        $config = new self();
+        if (!$config->getFromDB(1)) {
+            return null;
+        }
+        if ($on_login && (int) $config->fields['display_on_login'] !== 1) {
+            return null;
+        }
+
+        $user_login = 'anonymous';
+        $firstname  = '';
+        $realname   = '';
+        if (!$on_login) {
+            $user = new User();
+            if ($user->getFromDB(Session::getLoginUserID())) {
+                $user_login = $user->fields['name'] ?? 'anonymous';
+                $firstname  = $user->fields['firstname'] ?? '';
+                $realname   = $user->fields['realname'] ?? '';
+            }
+        }
+
+        $description_text = $on_login
+            ? ($config->fields['home_description_text'] ?: __('Welcome to the digital service center!', 'wikit'))
+            : ($config->fields['description_text'] ?: __('A problem ? Ask me your question 😊', 'wikit'));
+
+        $icon_url = $config->fields['icon_url'] ?? '';
+        if ($icon_url === '' || !Toolbox::isValidWebUrl($icon_url)) {
+            $icon_url = self::DEFAULT_ICON_URL;
+        }
+        $width  = (int) ($config->fields['width'] ?: 50);
+        $height = (int) ($config->fields['height'] ?: 50);
+
+        $options = [
+            'color'             => '#243469',
+            'webchatParams'     => [
+                'userId'        => $user_login,
+                'userIdType'    => 'login',
+                'userFirstName' => $firstname,
+                'userLastName'  => $realname,
+                'webChatToken'  => $config->fields['webchattoken'],
+                'originId'      => 'GLPI',
+                'customParams'  => new stdClass(),
+                'persona'       => $config->fields['persona'],
+            ],
+            'height'            => '80%',
+            'width'             => '30%',
+            'chatButtonIcon'    => [
+                'url'          => $icon_url,
+                'altText'      => 'Bob',
+                'height'       => $height . 'px',
+                'width'        => $width . 'px',
+                'borderRadius' => '50%',
+            ],
+            'chatButtonTooltip' => [
+                'text'            => $description_text,
+                'backgroundColor' => '#005091',
+                'textColor'       => '#FFFFFF',
+                'visibility'      => 'hidden',
+            ],
+            'headerButtons'     => [
+                'color'                   => '#fff',
+                'closeIconDescription'    => $config->fields['close_text'] ?: __('Close the window', 'wikit'),
+                'launchIconDescription'   => $config->fields['open_newwindow_text'] ?: __('Open in new tab', 'wikit'),
+                'maximizeIconDescription' => $config->fields['maximize_text'] ?: __('Enlarge window', 'wikit'),
+                'minimizeIconDescription' => $config->fields['minimize_text'] ?: __('Shrink window', 'wikit'),
+            ],
+            'opening'           => [
+                'mode'     => 'close',
+                'delay'    => null,
+                'memorize' => true,
+            ],
+            'position'          => $on_login
+                ? ['right' => '1rem', 'bottom' => '1rem']
+                : ['left' => '1rem', 'top' => '1rem'],
+        ];
+        if ($on_login) {
+            $options['chatButtonAnimation'] = [
+                'delay'       => 300,
+                'enabled'     => true,
+                'openTooltip' => true,
+            ];
+        }
+
+        return $options;
+    }
+
+    /**
+     * Encode a value as a JavaScript literal, safe inside an inline <script> block
+     *
+     * @param mixed $value
+     *
+     * @return string
+     */
+    public static function toJs($value): string
+    {
+        return json_encode($value, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
     }
 
     public static function canView(): bool
@@ -56,6 +183,7 @@ class PluginWikitConfig extends CommonDBTM
 
     public function showForm($ID, $options = [])
     {
+        $this->getFromDB(1);
 
         echo "<form name='form' method='post' action='" . Toolbox::getItemTypeFormURL('PluginWikitConfig') . "'>";
 

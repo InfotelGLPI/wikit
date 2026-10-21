@@ -25,22 +25,28 @@
  --------------------------------------------------------------------------
  */
 
+
 function plugin_wikit_install()
 {
     global $DB;
 
-    if (!$DB->tableExists("glpi_plugin_wikit_configs")) {
+    $migration = new Migration(PLUGIN_WIKIT_VERSION);
+    $table     = "glpi_plugin_wikit_configs";
+
+    $is_new_install = !$DB->tableExists($table);
+    if ($is_new_install) {
         $DB->runFile(PLUGIN_WIKIT_DIR . "/install/sql/empty-1.1.0.sql");
+    }
 
-        if (!$DB->fieldExists("glpi_plugin_wikit_configs", "persona", false)) {
-            $query = "ALTER TABLE `glpi_plugin_wikit_configs` ADD `persona` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Navy';";
-            $DB->doQuery($query);
-        }
+    // Fields added after 1.0.0
+    $migration->addField($table, 'persona', 'string', ['value' => 'Navy']);
+    $migration->addField($table, 'icon_url', 'string');
+    foreach (['width', 'height', 'top', 'bottom', 'left', 'right'] as $field) {
+        $migration->addField($table, $field, 'integer', ['nodefault' => true, 'null' => true]);
+    }
+    $migration->executeMigration();
 
-        if (!$DB->fieldExists("glpi_plugin_wikit_configs", "icon_url", false)) {
-            $query = "ALTER TABLE `glpi_plugin_wikit_configs` ADD `icon_url` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL;";
-            $DB->doQuery($query);
-        }
+    if ($is_new_install) {
         $input['webchattoken'] = "";
         $input['description_text'] = __('A problem ? Ask me your question ??', 'wikit');
         $input['home_description_text'] = __('Welcome to the digital service center!', 'wikit');
@@ -60,19 +66,6 @@ function plugin_wikit_install()
         $config = new PluginWikitConfig();
         $input['id'] = 1;
         $config->add($input);
-
-    } elseif (!$DB->fieldExists("glpi_plugin_wikit_configs", "width")) {
-        $DB->runFile(PLUGIN_WIKIT_DIR . "/install/sql/update-1.1.0.sql");
-    }
-
-    if (!$DB->fieldExists("glpi_plugin_wikit_configs", "persona", false)) {
-        $query = "ALTER TABLE `glpi_plugin_wikit_configs` ADD `persona` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Navy';";
-        $DB->doQuery($query);
-    }
-
-    if (!$DB->fieldExists("glpi_plugin_wikit_configs", "icon_url", false)) {
-        $query = "ALTER TABLE `glpi_plugin_wikit_configs` ADD `icon_url` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL;";
-        $DB->doQuery($query);
     }
 
     return true;
