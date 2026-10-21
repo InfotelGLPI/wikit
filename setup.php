@@ -30,7 +30,7 @@ global $CFG_GLPI;
 
 use Glpi\Plugin\Hooks;
 
-define('PLUGIN_WIKIT_VERSION', '2.0.0');
+define('PLUGIN_WIKIT_VERSION', '2.0.1');
 
 // Minimal GLPI version, inclusive
 define("PLUGIN_WIKIT_MIN_GLPI", "11");
