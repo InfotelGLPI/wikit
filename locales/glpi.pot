@@ -8,36 +8,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Wikit plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-22 12:28+0000\n"
+"POT-Creation-Date: 2026-10-21 17:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: hook.php:45
+#: hook.php:51
 msgid "A problem ? Ask me your question ??"
 msgstr ""
 
-#: hook.php:46 inc/login.class.php:40
+#: hook.php:52 inc/config.class.php:97
 msgid "Welcome to the digital service center!"
 msgstr ""
 
-#: hook.php:47 inc/login.class.php:43
+#: hook.php:53 inc/config.class.php:136
 msgid "Close the window"
 msgstr ""
 
-#: hook.php:48 inc/login.class.php:44
+#: hook.php:54 inc/config.class.php:137
 msgid "Open in new tab"
 msgstr ""
 
-#: hook.php:49 inc/login.class.php:45
+#: hook.php:55 inc/config.class.php:138
 msgid "Enlarge window"
 msgstr ""
 
-#: hook.php:50 inc/login.class.php:46
+#: hook.php:56 inc/config.class.php:139
 msgid "Shrink window"
 msgstr ""
 
@@ -49,70 +49,78 @@ msgstr ""
 msgid "Please activate the plugin"
 msgstr ""
 
-#: inc/config.class.php:34 inc/config.class.php:63
+#: inc/config.class.php:34 inc/config.class.php:191
 msgid "Wikit plugin setup"
 msgstr ""
 
-#: inc/config.class.php:67
-msgid "Web Chat Token"
-msgstr ""
-
-#: inc/config.class.php:75
-msgid "Display on login"
-msgstr ""
-
-#: inc/config.class.php:82
-msgid "Home description text"
-msgstr ""
-
-#: inc/config.class.php:90
-msgid "Description text"
+#: inc/config.class.php:51
+msgid "Invalid avatar URL"
 msgstr ""
 
 #: inc/config.class.php:98
-msgid "Closing window text"
+msgid "A problem ? Ask me your question 😊"
 msgstr ""
 
-#: inc/config.class.php:106
-msgid "Open new window text"
+#: inc/config.class.php:195
+msgid "Web Chat Token"
 msgstr ""
 
-#: inc/config.class.php:114
-msgid "Maximize window text"
+#: inc/config.class.php:203
+msgid "Display on login"
 msgstr ""
 
-#: inc/config.class.php:122
-msgid "Minimize window text"
-msgstr ""
-
-#: inc/config.class.php:130
-msgid "Persona"
-msgstr ""
-
-#: inc/config.class.php:138
-msgid "Avatar URL"
-msgstr ""
-
-#: inc/config.class.php:146
-msgid "Width"
-msgstr ""
-
-#: inc/config.class.php:161
-msgid "Height"
-msgstr ""
-
-#: inc/config.class.php:176
-msgid "Top"
-msgstr ""
-
-#: inc/config.class.php:190
-msgid "Bottom"
-msgstr ""
-
-#: inc/config.class.php:204
-msgid "Left"
+#: inc/config.class.php:210
+msgid "Home description text"
 msgstr ""
 
 #: inc/config.class.php:218
+msgid "Description text"
+msgstr ""
+
+#: inc/config.class.php:226
+msgid "Closing window text"
+msgstr ""
+
+#: inc/config.class.php:234
+msgid "Open new window text"
+msgstr ""
+
+#: inc/config.class.php:242
+msgid "Maximize window text"
+msgstr ""
+
+#: inc/config.class.php:250
+msgid "Minimize window text"
+msgstr ""
+
+#: inc/config.class.php:258
+msgid "Persona"
+msgstr ""
+
+#: inc/config.class.php:266
+msgid "Avatar URL"
+msgstr ""
+
+#: inc/config.class.php:274
+msgid "Width"
+msgstr ""
+
+#: inc/config.class.php:289
+msgid "Height"
+msgstr ""
+
+#: inc/config.class.php:304
+msgid "Top"
+msgstr ""
+
+#: inc/config.class.php:318
+msgid "Bottom"
+msgstr ""
+
+#: inc/config.class.php:332
+msgid "Left"
+msgstr ""
+
+#: inc/config.class.php:346
 msgid "Right"
 msgstr ""
